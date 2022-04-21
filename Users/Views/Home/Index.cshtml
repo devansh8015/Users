@@ -1,0 +1,62 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered Mytable1" id="Mytable">
+	
+</table>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+
+            $(".Mytable1").DataTable({
+                  "processing": true,
+                  "serverSide": true, // for process server side
+                  "filter": true,
+                  "iDisplayLength": 25,
+                  "aLengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+
+                "dom": "flBrtip",
+                "order": [[1, "desc"]],
+
+
+                // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/Home/UserListData?deletedFlag=0",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                  "columns": [
+					  { "data": "FirstName", "title": "First Name", "name": "FirstName", "autoWidth": true },
+                      { "data": "LastName", "title": "LastName", "name": "LastName", "autoWidth": true },
+                      { "data": "EmailId", "title": "EmailId", "name": "EmailId", "autoWidth": true },
+					  { "data": "DateOfBirth", "title": "DateOfBirth", "name": "DateOfBirth", "autoWidth": true },
+     
+                      
+                   
+                     
+                  
+
+                   
+
+                    ]
+
+              });
+
+
+        });
+
+
+
+
+
+</script>
